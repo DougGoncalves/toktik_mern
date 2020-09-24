@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
 import "./Video.css";
 import VideoFooter from './VideoFooter';
+import VideoSidebar from './VideoSidebar';
 
-function Video() {
+function Video({ url, channel, description, song, likes, shares, messages  }) {
 const [playing, setPlaying] = useState(false);  
 
 const videoRef = useRef(null);
@@ -24,10 +25,11 @@ const handleVideoPress = () => {
         className="video__player" 
         loop 
         ref={videoRef}
-        src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+        src={url}
       ></video>
 
-      <VideoFooter/>
+      <VideoFooter channel={channel} description={description} song={song}/>
+      <VideoSidebar likes={likes} shares={shares} messages={messages}/>
 
     </div>  
 
